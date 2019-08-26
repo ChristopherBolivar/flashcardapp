@@ -60,6 +60,10 @@
   }
   
   /* Position the front and back side */
+  .flip-card-back p {
+      text-align: left;
+      padding: 2rem;
+  }
   .flip-card-back{background-color: #fff;}
   .flip-card-front, .flip-card-back {
     position: absolute;

@@ -70,7 +70,7 @@ document.querySelector("#getDef").addEventListener('click', () => {
                         <div class="flip-card">
   <div class="flip-card-inner">
     <div class="flip-card-front">
-    ${dictionaryapi.data[0].meta.stems[0]}
+    <h3>${dictionaryapi.data[0].meta.stems[0]}</h3>
     </div>
     <div class="flip-card-back">
       
