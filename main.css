@@ -10,8 +10,9 @@
     a:visited,
     a:hover {
         text-decoration: none;
-        color: inherit;
+        color: #fff!important;
     }
+   .btn {color: #fff;}
     
     section {
         margin-top: 3rem;
@@ -19,15 +20,8 @@
         width: 960px;
         max-width: 80%;
     }
-    .side-a{
-        height: 15rem;
-    }
-    .card, .side-b {
-        height: 100%;
-    }
-    .btn {
-        color: #fff;
-    }
+   
+    
     
     form {
         width: 50%;
@@ -36,54 +30,45 @@
     .nav {
         visibility: hidden;
     }
-    
-    .side-b p {
-        text-align: left;
+    label {
+        font-size: 1.2rem;
     }
-    
-    .photo:hover {
-        transform: rotate3d(1, 0, 0, 180deg);
-    }
-    
-    .photo:hover .side-a {
-        display: none;
-    }
-    
-    .photo:hover .side-b {
-        display: block;
-    }
-    
-    .hr1 {
-        background-color: red;
-    }
-    
-    .side-b {
-        display: none;
-    }
-    
-    .side-b p {
-        padding: .5rem;
-    }
-    
-    .side-a,
-    .side-b {
-        backface-visibility: hidden;
-        padding: 1rem;
-        width: 100%;
-    }
-    
-    .side-b {
-        transform: rotateX(180deg);
-    }
-    
-    .side-a:target {
-        transform: scale(0.8);
-    }
-    
-    .photo {
-        position: relative;
-        height: inherit;
-        margin: 2rem;
-        transition: transform 1s cubic-bezier(.55, -.62, .27, 1.2), opacity 2s ease;
-        transform-style: preserve-3d;
-    }
+     /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-card {
+    background-color: #fff;
+    margin: 1rem;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  }
+  
+  /* This container is needed to position the front and back side */
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    max-height: 100%;
+    border: 1px solid #f1f1f1;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+  .flip-card:hover .flip-card-inner {
+    transform: rotateX(180deg);
+  }
+  
+  /* Position the front and back side */
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+  
+ 
+  
+  /* Style the back side */
+  .flip-card-back {
+    transform: rotateX(180deg);
+  } 
