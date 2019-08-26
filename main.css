@@ -1,6 +1,7 @@
     body,
     section,
-    form {
+    form,
+    #form2 {
         margin: 0 auto;
         text-align: center;
     }
@@ -29,6 +30,10 @@
     
     .nav {
         visibility: hidden;
+    }
+    
+    .side-b p {
+        text-align: left;
     }
     
     .photo:hover {
