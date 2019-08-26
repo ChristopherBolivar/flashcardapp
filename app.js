@@ -17,7 +17,7 @@ document.querySelector("#strQuiz").addEventListener('click', () => {
         <div class="col-12 mt-2">
         <div class="row">
         <label class="col">Word:</label> 
-        <input class="col" class="input${i}" type="text">
+        <input class="col" id="input${i}" type="text">
         <button type="button" class="button${i} col btn btn-danger ml-1">
         <i class="fa fa-trash"></i>
         </button>
@@ -36,14 +36,14 @@ document.querySelector("#strQuiz").addEventListener('click', () => {
     ` }
 })
 
-//function fetches value of the inputs stores them into an array, sends the array items to the API
+//function fetches value of the inputs stores them into
 document.querySelector("#getDef").addEventListener('click', () => {
     let vWord = [];
     let dArr = [];
     let iDiv = document.querySelector("#form2").length
     let vDiv = document.querySelector("#result");
-    for (i = 0; i < iDiv; i++) {
-        vWord.push(document.querySelector(`.input${i}`).value)
+    for (i = 0; i < iDiv / 2; i++) {
+        vWord.push(document.querySelector(`#input${i}`).value)
     }
     for (i = 0; i < vWord.length; i++) {
 
@@ -58,7 +58,7 @@ document.querySelector("#getDef").addEventListener('click', () => {
 			      <h3 id="wordFront">${dictionaryapi.data[0].meta.stems[0]}</h3>
 			      </div>
 			      <div  class="side-b flash ">
-                 <h3>${dictionaryapi.data[0].meta.stems[0]}, </h3>
+                 <h3>${dictionaryapi.data[0].meta.stems[0]}</h3>
                  <hr class="hr1">
                  <p>${dictionaryapi.data[0].fl}, ${dictionaryapi.data[0].hwi.hw}, ${dictionaryapi.data[0].hwi.prs[0].mw}</p> 
                  <p>${dArr.join(" , ")} </p> 
