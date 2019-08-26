@@ -65,7 +65,7 @@ document.querySelector("#getDef").addEventListener('click', () => {
             for (let i = 0; i < dictionaryapi.data[0].shortdef.length; i++) {
                 dArr.push(dictionaryapi.data[0].shortdef[i])
             }
-            console.log(dArr)
+            
             vDiv.innerHTML += ` 
                         <div class="flip-card">
   <div class="flip-card-inner">
@@ -82,6 +82,7 @@ document.querySelector("#getDef").addEventListener('click', () => {
   </div>
 </div>
                         `
+            
         })
     }
     document.querySelector('#pills-contact-tab').click()
