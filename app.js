@@ -1,10 +1,11 @@
-function loadQuiz() {
+function loadQuiz() { //This function simply takes you to the next page
 
     document.querySelector('#pills-home-tab').click();
 
 }
-document.querySelector("#strQuiz").addEventListener('click', () => {
+//Function getting the value of the input and prints out input divs on the next page
 
+document.querySelector("#strQuiz").addEventListener('click', () => {
     let wCount = document.querySelector("#numVoWords")
     let formOne = document.querySelector("#myForm")
     let formTwo = document.querySelector("#form2")
@@ -17,7 +18,7 @@ document.querySelector("#strQuiz").addEventListener('click', () => {
         <div class="row">
         <label class="col">Word:</label> 
         <input class="col" class="input${i}" type="text">
-        <button type="button" class="col btn btn-danger ml-1">
+        <button type="button" class="button${i} col btn btn-danger ml-1">
         <i class="fa fa-trash"></i>
         </button>
         </div>
@@ -26,14 +27,16 @@ document.querySelector("#strQuiz").addEventListener('click', () => {
         }
 
         document.querySelector('#pills-profile-tab').click()
-    } else { error1.innerHTML = `
+    }
+    //catch errror
+    else { error1.innerHTML = `
     
     <div class="alert alert-danger" role="alert">*Please don't leave the required text field <u>blank</u>, or provide an integer <u>greater</u> than zero</div>
     
     ` }
 })
 
-
+//function fetches value of the inputs stores them into an array, sends the array items to the API
 document.querySelector("#getDef").addEventListener('click', () => {
     let vWord = [];
     let dArr = [];
