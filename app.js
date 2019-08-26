@@ -16,7 +16,7 @@ document.querySelector("#strQuiz").addEventListener('click', () => {
         for (let i = 0; i < wCount.value; i++) {
             formTwo.innerHTML +=
                 `
-        <div class="col-12 mt-2">
+        <div id="div${i}" class="col-12 mt-2">
         <div class="row">
         <label class="col">Word:</label> 
         <input class="col" id="input${i}" type="text">
@@ -42,7 +42,7 @@ document.querySelector("#strQuiz").addEventListener('click', () => {
         document.querySelector(`.button${ i }`).addEventListener('click', () => {
             console.log('yo')
             console.log(i)
-
+           
 
         })
     }
