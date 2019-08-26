@@ -21,16 +21,6 @@ body {
     display: block;
 }
 
-.side-a,
-.side-b h3 {
-    text-align: center;
-}
-
-.hr1,
-.hr2 {
-    width: 100%;
-}
-
 .hr1 {
     background-color: red;
 }

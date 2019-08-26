@@ -10,6 +10,7 @@ document.querySelector("#strQuiz").addEventListener('click', () => {
         formTwo.innerHTML +=
             `
         <div class="col-12">
+        <h4>Word #${i+1}</h4>
         <input class="input${i}" type="text">
         </div>
         `
@@ -29,7 +30,7 @@ document.querySelector("#getDef").addEventListener('click', () => {
         axios.get('https://www.dictionaryapi.com/api/v3/references/collegiate/json/' + vWord[i] + '?key=ee67d907-7224-4430-a548-5dffdc6214eb').then((dictionaryapi) => {
 
             vDiv.innerHTML += `
-        <div id="card" class="photo card bg-light mb-3">
+        <div class="photo card bg-light mb-3">
 			    <div class="side-a flash card-body">
 			      <h3 id="wordFront">${dictionaryapi.data[0].meta.stems[0]}</h3>
 			      </div>
