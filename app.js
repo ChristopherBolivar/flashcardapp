@@ -4,18 +4,27 @@ function loadQuiz() {
 
 }
 document.querySelector("#strQuiz").addEventListener('click', () => {
+
     let wCount = document.querySelector("#numVoWords")
+    let formOne = document.querySelector("#myForm")
     let formTwo = document.querySelector("#form2")
-    for (let i = 0; i < wCount.value; i++) {
-        formTwo.innerHTML +=
-            `
+    if (wCount.value > 0) {
+        for (let i = 0; i < wCount.value; i++) {
+            formTwo.innerHTML +=
+                `
         <div class="col-12">
         <h4>Word #${i+1}</h4>
         <input class="input${i}" type="text">
         </div>
         `
-    }
-    document.querySelector('#pills-profile-tab').click()
+        }
+
+        document.querySelector('#pills-profile-tab').click()
+    } else { formOne.innerHTML += `
+    
+    <div class="alert alert-danger" role="alert">*Please provide atleast a number of words greater than 0</div>
+    
+    ` }
 })
 
 
