@@ -76,7 +76,6 @@ document.querySelector("#getDef").addEventListener('click', () => {
       
     <div class = "side-b flash ">
     <h3> ${dictionaryapi.data[0].meta.stems[0]} </h3> 
-    <hr class = "hr1" >
     <p> ${dictionaryapi.data[0].fl}, ${dictionaryapi.data[0].hwi.hw}, ${dictionaryapi.data[0].hwi.prs[0].mw} </p>  
     <p> ${dArr.join() } </p>  
     </div>
