@@ -1,3 +1,5 @@
+var formTwo = document.querySelector("#form2")
+
 function loadQuiz() { //This function simply takes you to the next page
 
     document.querySelector('#pills-home-tab').click();
@@ -6,9 +8,9 @@ function loadQuiz() { //This function simply takes you to the next page
 //Function getting the value of the input and prints out input divs on the next page
 
 document.querySelector("#strQuiz").addEventListener('click', () => {
+    console.log("Starting the quiz")
     let wCount = document.querySelector("#numVoWords")
     let formOne = document.querySelector("#myForm")
-    let formTwo = document.querySelector("#form2")
     let error1 = document.querySelector(".error1")
     if (wCount.value > 0) {
         for (let i = 0; i < wCount.value; i++) {
@@ -34,7 +36,18 @@ document.querySelector("#strQuiz").addEventListener('click', () => {
     <div class="alert alert-danger" role="alert">*Please don't leave the required text field <u>blank</u>, or provide an integer <u>greater</u> than zero</div>
     
     ` }
+
+    for (let i = 0; i < formTwo.length / 2; i++) {
+        console.log(formTwo.length / 2)
+        document.querySelector(`.button${ i }`).addEventListener('click', () => {
+            console.log('yo')
+            console.log(i)
+
+
+        })
+    }
 })
+
 
 //function fetches value of the inputs stores them into
 document.querySelector("#getDef").addEventListener('click', () => {
@@ -52,19 +65,17 @@ document.querySelector("#getDef").addEventListener('click', () => {
                 dArr.push(dictionaryapi.data[0].shortdef[i])
             }
             console.log()
-            vDiv.innerHTML += `
-        <div class="photo card bg-light mb-3">
-			    <div class="side-a flash card-body">
-			      <h3 id="wordFront">${dictionaryapi.data[0].meta.stems[0]}</h3>
-			      </div>
-			      <div  class="side-b flash ">
-                 <h3>${dictionaryapi.data[0].meta.stems[0]}</h3>
-                 <hr class="hr1">
-                 <p>${dictionaryapi.data[0].fl}, ${dictionaryapi.data[0].hwi.hw}, ${dictionaryapi.data[0].hwi.prs[0].mw}</p> 
-                 <p>${dArr.join(" , ")} </p> 
-	            </div>
-			    </div>
-        `
+            vDiv.innerHTML += ` <div class = "photo card bg-light mb-3" >
+                        <div class = "side-a flash card-body" >
+                        <h3 id = "wordFront"> ${dictionaryapi.data[0].meta.stems[0]} </h3> 
+                        </div>
+                         <div class = "side-b flash ">
+                        <h3> ${dictionaryapi.data[0].meta.stems[0]} </h3> 
+                        <hr class = "hr1" >
+                        <p> ${dictionaryapi.data[0].fl}, ${dictionaryapi.data[0].hwi.hw}, ${dictionaryapi.data[0].hwi.prs[0].mw} </p>  
+                        <p> ${dArr.join(" , ") } </p>  
+                        </div> </div>
+                        `
         })
     }
     document.querySelector('#pills-contact-tab').click()

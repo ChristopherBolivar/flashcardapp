@@ -19,7 +19,12 @@
         width: 960px;
         max-width: 80%;
     }
-    
+    .side-a{
+        height: 15rem;
+    }
+    .card, .side-b {
+        height: 100%;
+    }
     .btn {
         color: #fff;
     }
@@ -64,8 +69,6 @@
     .side-b {
         backface-visibility: hidden;
         padding: 1rem;
-        height: 15rem;
-        max-height: 100%;
         width: 100%;
     }
     
