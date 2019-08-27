@@ -1,5 +1,3 @@
-var formTwo = document.querySelector("#form2")
-
 function loadQuiz() { //This function simply takes you to the next page
 
     document.querySelector('#pills-home-tab').click();
@@ -12,15 +10,16 @@ document.querySelector("#strQuiz").addEventListener('click', () => {
     let wCount = document.querySelector("#numVoWords")
     let formOne = document.querySelector("#myForm")
     let error1 = document.querySelector(".error1")
+    let formTwo = document.querySelector("#form2")
     if (wCount.value > 0) {
         for (let i = 0; i < wCount.value; i++) {
             formTwo.innerHTML +=
                 `
         <div id="div${i}" class="col-12 mt-2">
         <div class="row">
-        <label class="col mt-1">Word:</label> 
-        <input class="col" id="input${i}" type="text">
-        <button type="button" class="button${i} col btn btn-danger ml-1">
+        <label class="col-4 mt-1">Word:</label> 
+        <input class="col-5" id="input${i}" type="text">
+        <button type="button" class="button${i} col-2 btn btn-danger ml-1">
         <i class="fa fa-trash"></i>
         </button>
         </div>
@@ -42,11 +41,14 @@ document.querySelector("#strQuiz").addEventListener('click', () => {
         document.querySelector(`.button${ i }`).addEventListener('click', () => {
             console.log('yo')
             console.log(i)
+            console.log(formTwo.length)
+            formTwo.splice(1,i,"")
            
 
         })
     }
 })
+
 
 
 //function fetches value of the inputs stores them into
@@ -70,7 +72,7 @@ document.querySelector("#getDef").addEventListener('click', () => {
                         <div class="flip-card">
   <div class="flip-card-inner">
     <div class="flip-card-front">
-    <h3>${dictionaryapi.data[0].meta.stems[0]}</h3>
+    <h3 class="hand">${dictionaryapi.data[0].meta.stems[0]}</h3>
     </div>
     <div class="flip-card-back">
       
