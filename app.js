@@ -11,6 +11,8 @@ document.querySelector("#strQuiz").addEventListener('click', () => {
     let formOne = document.querySelector("#myForm")
     let error1 = document.querySelector(".error1")
     let formTwo = document.querySelector("#form2")
+    let vDiv = document.querySelector("#result");
+
     if (wCount.value > 0) {
         for (let i = 0; i < wCount.value; i++) {
             formTwo.innerHTML +=
@@ -18,7 +20,7 @@ document.querySelector("#strQuiz").addEventListener('click', () => {
         <div id="div${i}" class="col-12 mt-2">
         <div class="row">
         <label class="col-4 mt-1">Word:</label> 
-        <input class="col-5" id="input${i}" type="text">
+        <input class="col-5 inputs" id="input${i}" type="text">
         <button type="button" class="button${i} col-2 btn btn-danger ml-1">
         <i class="fa fa-trash"></i>
         </button>
@@ -36,17 +38,25 @@ document.querySelector("#strQuiz").addEventListener('click', () => {
     
     ` }
 
-    for (let i = 0; i < formTwo.length / 2; i++) {
-        console.log(formTwo.length / 2)
+    for (let i = 0; i < formTwo.children.length; i++) {
+        let formTwo = document.querySelector("#form2")
+        var arr = Array.prototype.slice.call( formTwo.children )
+        console.log(arr)
+        console.log(formTwo.children.length)
         document.querySelector(`.button${ i }`).addEventListener('click', () => {
             console.log('yo')
             console.log(i)
-            console.log(formTwo.length)
-            formTwo.splice(1,i,"")
-           
+            console.log(arr)
+            console.log(arr[i])
+            // arr.splice(i,1)
+            console.log(arr)
+            arr[i].remove()
+
 
         })
     }
+
+
 })
 
 
@@ -57,12 +67,28 @@ document.querySelector("#getDef").addEventListener('click', () => {
     let dArr = [];
     let qName = document.querySelector("#qname").value
     let iDiv = document.querySelector("#form2").length
+    let formTwo = document.querySelector("#form2")
+    var arr = Array.prototype.slice.call( formTwo.children )
     let vDiv = document.querySelector("#result");
     let rDiv = document.querySelector("#rHeader")
     let error2 = document.querySelector("#error2")
-    for (i = 0; i < iDiv / 2; i++) {
-        vWord.push(document.querySelector(`#input${i}`).value)
+    let inputs =  [...document.getElementsByClassName('inputs')]
+
+    for (i = 0; i < inputs.length; i++) {
+        // console.log(document.querySelectorAll(`.inputs`))
+        // if (document.querySelector(`#input${i}`).value === null) {
+        //     i++
+        //     continue;
+        // }
+        // console.log(document.querySelector(`#input${i}`))
+        console.log(inputs[i].value)
+        vWord.push(inputs[i].value)
+
+//        vWord.push(document.querySelector(`#input${i}`).value)
     }
+    console.log(vWord)
+
+
     if(qName===undefined||qName===""){
         rDiv.innerHTML = `
         <div class="row">
@@ -98,6 +124,7 @@ document.querySelector("#getDef").addEventListener('click', () => {
 
         axios.get('https://www.dictionaryapi.com/api/v3/references/collegiate/json/' + vWord[i] + '?key=ee67d907-7224-4430-a548-5dffdc6214eb').then((dictionaryapi) => {
             dArr = [];
+            //If nothing returns say you need a real word
             for (let i = 0; i < dictionaryapi.data[0].shortdef.length; i++) {
                 dArr.push(dictionaryapi.data[0].shortdef[i])
             }
