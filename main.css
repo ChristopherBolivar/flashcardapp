@@ -21,7 +21,14 @@
         max-width: 80%;
     }
    
-    
+    #rHeader{
+      text-align: left;
+    }
+    #rHeader .edit {
+    text-align: right;
+    color: blue;
+    text-decoration: underline;
+    }
     
     form {
         width: 80%;

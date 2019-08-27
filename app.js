@@ -55,11 +55,45 @@ document.querySelector("#strQuiz").addEventListener('click', () => {
 document.querySelector("#getDef").addEventListener('click', () => {
     let vWord = [];
     let dArr = [];
+    let qName = document.querySelector("#qname").value
     let iDiv = document.querySelector("#form2").length
     let vDiv = document.querySelector("#result");
+    let rDiv = document.querySelector("#rHeader")
+    let error2 = document.querySelector("#error2")
     for (i = 0; i < iDiv / 2; i++) {
         vWord.push(document.querySelector(`#input${i}`).value)
     }
+    if(qName===undefined||qName===""){
+        rDiv.innerHTML = `
+        <div class="row">
+      <div class="col-8">
+      <h3>Unamed Flashcard Deck</h3>
+      </div>
+      <div class="col-4">
+      <p class="edit" data-toggle="modal" data-target="#exampleModalLong">Edit this flashcard deck
+<i class="fa fa-edit"></i>
+</p>
+      </div>
+        </div>
+        
+        `
+    }else {
+        rDiv.innerHTML = `
+  <div class="row">
+<div class="col-8">
+<h3>${qName}</h3>
+</div>
+<div class="col-4">
+<p class="edit" data-toggle="modal" data-target="#exampleModalLong">Edit this flashcard deck
+<i class="fa fa-edit"></i>
+</p>
+</div>
+  </div>
+  
+  `
+    }
+
+    
     for (i = 0; i < vWord.length; i++) {
 
         axios.get('https://www.dictionaryapi.com/api/v3/references/collegiate/json/' + vWord[i] + '?key=ee67d907-7224-4430-a548-5dffdc6214eb').then((dictionaryapi) => {
@@ -67,7 +101,7 @@ document.querySelector("#getDef").addEventListener('click', () => {
             for (let i = 0; i < dictionaryapi.data[0].shortdef.length; i++) {
                 dArr.push(dictionaryapi.data[0].shortdef[i])
             }
-            
+           
             vDiv.innerHTML += ` 
                         <div class="flip-card">
   <div class="flip-card-inner">
@@ -85,7 +119,8 @@ document.querySelector("#getDef").addEventListener('click', () => {
 </div>
                         `
             
+    document.querySelector('#pills-contact-tab').click()
         })
     }
-    document.querySelector('#pills-contact-tab').click()
+
 })
